@@ -1,0 +1,10 @@
+# Desarrollo local: backend hermano en modo editable.
+-e ../chucua-backend
+
+# Despliegue en Render: comenta la línea anterior y usa el repositorio publicado.
+# chucua-backend @ git+https://github.com/TU-USUARIO/chucua-backend.git
+
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pytest>=8.0
+httpx>=0.27
