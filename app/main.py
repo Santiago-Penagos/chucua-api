@@ -14,6 +14,7 @@ from .rutas import (
     humedal_puntos,
     jac,
     salud,
+    sectores,
     seguridad,
     servicios_publicos,
     transporte,
@@ -23,6 +24,7 @@ from .rutas import (
 
 RUTAS = (
     salud.router,
+    sectores.router,
     escenarios.router,
     educativos.router,
     vias.router,
