@@ -1,8 +1,6 @@
 import pytest
 
-from payloads import payload
-
-DOMINIOS = ("escenarios", "educativos", "vias", "catastro")
+from payloads import DOMINIOS, payload
 
 
 @pytest.mark.parametrize("dominio", DOMINIOS)

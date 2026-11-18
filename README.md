@@ -1,6 +1,6 @@
 # chucua-api
 
-API HTTP en FastAPI que expone el CRUD de los cuatro dominios geográficos del
+API HTTP en FastAPI que expone el CRUD de los catorce dominios geográficos del
 barrio Chucua de la Vaca como GeoJSON.
 
 ## Instalación local

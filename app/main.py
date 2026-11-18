@@ -3,7 +3,41 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import NOMBRE, VERSION, origenes_cors
 from .errores import registrar_manejadores
-from .rutas import catastro, educativos, escenarios, salud, vias
+from .rutas import (
+    catastro,
+    centros_salud,
+    comercio,
+    cultura,
+    demografia,
+    educativos,
+    escenarios,
+    humedal_puntos,
+    jac,
+    salud,
+    seguridad,
+    servicios_publicos,
+    transporte,
+    vias,
+    zonas_verdes,
+)
+
+RUTAS = (
+    salud.router,
+    escenarios.router,
+    educativos.router,
+    vias.router,
+    catastro.router,
+    jac.router,
+    centros_salud.router,
+    seguridad.router,
+    humedal_puntos.router,
+    transporte.router,
+    comercio.router,
+    cultura.router,
+    servicios_publicos.router,
+    zonas_verdes.router,
+    demografia.router,
+)
 
 
 def crear_app() -> FastAPI:
@@ -14,13 +48,7 @@ def crear_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    for router in (
-        salud.router,
-        escenarios.router,
-        educativos.router,
-        vias.router,
-        catastro.router,
-    ):
+    for router in RUTAS:
         app.include_router(router)
     registrar_manejadores(app)
     return app
