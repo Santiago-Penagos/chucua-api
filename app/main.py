@@ -1,5 +1,9 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from seed.ejecutar import sembrar
 
 from .config import NOMBRE, VERSION, origenes_cors
 from .errores import registrar_manejadores
@@ -42,8 +46,14 @@ RUTAS = (
 )
 
 
+@asynccontextmanager
+async def _ciclo_vida(_app: FastAPI):
+    sembrar(fuente="respaldo")
+    yield
+
+
 def crear_app() -> FastAPI:
-    app = FastAPI(title=NOMBRE, version=VERSION)
+    app = FastAPI(title=NOMBRE, version=VERSION, lifespan=_ciclo_vida)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=origenes_cors(),
